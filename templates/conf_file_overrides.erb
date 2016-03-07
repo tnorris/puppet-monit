@@ -12,19 +12,19 @@ set eventqueue
     basedir <%= scope['monit::eventqueue_basedir'] %>
     slots <%= scope['monit::eventqueue_slots'] %>
 <% end -%>
-<% if scope['monit::mmonit_url'] %>
+<% if scope['monit::mmonit_url'] != "undef" %>
 set mmonit <%= scope['monit::mmonit_url'] %>
 <% end -%>
 
 set mail-format {
     from: <%= scope['monit::mailformat_from'] %>
-<% if scope['monit::mailformat_replyto'] -%>
+<% if scope['monit::mailformat_replyto'] != "undef" -%>
     reply-to: <%= scope['monit::mailformat_replyto'] %>
 <% end -%>
-<% if scope['monit::mailformat_subject'] -%>
+<% if scope['monit::mailformat_subject'] != "undef" -%>
     subject: <%= scope['monit::mailformat_subject'] %>
 <% end -%>
-<% if scope['monit::mailformat_message'] -%>
+<% if scope['monit::mailformat_message'] != "undef" -%>
     message: <%= scope['monit::mailformat_message'] %>
 <% end -%>
 }
