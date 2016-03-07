@@ -72,7 +72,7 @@ module Puppet::Parser::Functions
       # Validate action.
       # # https://mmonit.com/monit/documentation/monit.html#action
       unless test.key? 'action'
-        test['action'] = 'ALERT'
+        test['action'] = 'EXEC /usr/local/bin/monit-to-slack.py'
       else
         test['action'] = test['action'].upcase
         unless TEST_ACTIONS.include? test['action']
@@ -206,7 +206,7 @@ module Puppet::Parser::Functions
             condition += " RETRY #{test['retry']}"
           end
           if test.key? 'action'
-            test['action'] = test['action'].upcase
+            test['action'] = test['action']
           else
             test['action'] = 'ALERT'
         end
