@@ -28,7 +28,7 @@ set mail-format {
     message: <%= scope['monit::mailformat_message'] %>
 <% end -%>
 }
-<% ! [:undefined, :undef, nil, ''].include?if scope['monit::alerts'] -%>
+<% if ! [:undefined, :undef, nil, ''].include?scope['monit::alerts'] -%>
 
   <%- scope['monit::alerts'].each do |alert| -%>
 set alert <%= alert %>
